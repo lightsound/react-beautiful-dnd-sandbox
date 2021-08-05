@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   parserOptions: { project: "./tsconfig.json" },
-  env: { es2021: true, browser: true, jest: true, node: true },
+  env: { es2021: true, browser: true, node: true },
   plugins: ["simple-import-sort", "tailwindcss"],
   extends: [
     "eslint:recommended",

@@ -1,18 +1,21 @@
 import type { NextPage } from "next";
-import { Layout } from "src/components/layout";
+import dynamic from "next/dynamic";
 
-const Home: NextPage = () => {
-  const handleClick = () => {
-    window.alert("Hello, World!");
-  };
+const DnD = dynamic(
+  async () => {
+    const { DnD } = await import("src/components/DnD");
+    return DnD;
+  },
+  { ssr: false }
+);
 
+const Index: NextPage = () => {
   return (
-    <Layout>
-      <button className="p-2" onClick={handleClick}>
-        Click me!
-      </button>
-    </Layout>
+    <>
+      <h1>react-beautiful-dnd</h1>
+      <DnD />
+    </>
   );
 };
 
-export default Home;
+export default Index;

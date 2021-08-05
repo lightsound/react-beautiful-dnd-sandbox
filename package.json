@@ -12,8 +12,7 @@
     "fix": "run-s -l -c fix:eslint fix:prettier",
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "yarn lint:prettier --write",
-    "test": "run-p -l -c --aggregate-output lint:* unit",
-    "unit": "jest",
+    "test": "run-p -l -c --aggregate-output lint:*",
     "prepare": "husky install"
   },
   "babel": {
@@ -33,17 +32,16 @@
   "dependencies": {
     "next": "11.0.1",
     "react": "17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@testing-library/react": "12.0.0",
-    "@types/jest": "26.0.24",
     "@types/node": "16.4.7",
     "@types/react": "17.0.15",
+    "@types/react-beautiful-dnd": "^13.1.1",
     "@typescript-eslint/eslint-plugin": "4.28.5",
     "@typescript-eslint/parser": "4.28.5",
     "autoprefixer": "10.3.1",
-    "babel-jest": "27.0.6",
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "8.3.0",
@@ -52,9 +50,6 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "eslint-plugin-tailwindcss": "1.14.1",
     "husky": "7.0.1",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "27.0.6",
-    "jest-watch-typeahead": "0.6.4",
     "lint-staged": "11.1.1",
     "npm-run-all": "4.1.5",
     "postcss": "8.3.6",

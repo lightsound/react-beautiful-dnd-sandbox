@@ -7,7 +7,7 @@ const App = (props: AppProps) => {
   return (
     <>
       <Head>
-        <title>nexst</title>
+        <title>react-beautiful-dnd</title>
       </Head>
       <props.Component {...props.pageProps} />
     </>
