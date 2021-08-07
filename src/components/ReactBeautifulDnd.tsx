@@ -1,17 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import { useCallback, useState } from "react";
 import type { DropResult, ResponderProvided } from "react-beautiful-dnd";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
-const ITEMS = [
-  { id: "1", url: "https://placehold.jp/150x150.png" },
-  { id: "2", url: "https://placehold.jp/200x200.png" },
-  { id: "3", url: "https://placehold.jp/250x250.png" },
-  { id: "4", url: "https://placehold.jp/300x300.png" },
-];
-
-export const DnD = () => {
-  const [items, setItems] = useState(ITEMS);
+export const ReactBeautifulDnd = () => {
+  const [items, setItems] = useState([1, 2, 3, 4, 5]);
 
   const handleOnDragEnd = useCallback((result: DropResult, _provided: ResponderProvided) => {
     setItems((prevItems) => {
@@ -28,19 +20,14 @@ export const DnD = () => {
       <Droppable droppableId="images" direction="horizontal">
         {(provided) => {
           return (
-            <ul {...provided.droppableProps} ref={provided.innerRef} className="flex bg-green-400">
+            <ul {...provided.droppableProps} ref={provided.innerRef} className="flex flex-wrap gap-2">
               {items.map((item, index) => {
                 return (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                  <Draggable key={item} draggableId={item.toString()} index={index}>
                     {(provided) => {
                       return (
-                        <li
-                          className="mr-2"
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <img src={item.url} alt="" width={100} height={100} />
+                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <div className={`w-20 h-20 ${getColor(item)}`}>{item}</div>
                         </li>
                       );
                     }}
@@ -54,4 +41,21 @@ export const DnD = () => {
       </Droppable>
     </DragDropContext>
   );
+};
+
+const getColor = (item: number) => {
+  switch (item) {
+    case 1:
+      return "bg-red-400";
+    case 2:
+      return "bg-blue-400";
+    case 3:
+      return "bg-pink-400";
+    case 4:
+      return "bg-yellow-400";
+    case 5:
+      return "bg-purple-400";
+    default:
+      return "bg-black";
+  }
 };
